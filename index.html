@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Duelo de Guerreiros</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="notification-container"  style="display: none;"> <!-- Defina o estilo para 'display: none;' -->
+            <div id="notification">
+                <h3>Parabéns! Seu personagem chamado <span id="span-name"></span> foi criado</h3>
+                Agora, clique no botão abaixo para ir para a batalha!
+                <button id="btn-comecar">Começar!</button>
+            </div>
+            
+        </div>
+
+        <div class="main-box">
+            <!-- Seu conteúdo da primeira página aqui -->
+            <div class="titulo-subtitulo"><h1>Bem vindo ao Duelo de Guerreiros!<br>Escolha o nome do seu guerreiro, e junte-se a batalha!</h1></div>
+            
+            <div class="perguntas">
+                <label for="name" class="label-question">Qual será o nome do seu guerreiro?</label>
+                <input type="text" class="input-answer" placeholder="Nome do Guerreiro" id="user-name">
+            </div>
+            <div class="button-area">
+                <button class="button-class" id="btn-criar">Criar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+
+        let notification = document.querySelector('.notification-container');
+        let userName = document.querySelector('#user-name');
+        let spanName = document.querySelector('#span-name');
+        let btnMudarPagina = document.querySelector('#btn-comecar');
+        let button = document.getElementById('btn-criar');
+
+        button.addEventListener('click', function(){
+            // Mostrar a div de notificação quando o botão "Criar" for clicado
+            notification.style.display = 'flex';
+            notification.style.justifyContent ='center'
+            notification.style.alignItems = 'center'
+
+            // Atualizar o nome do personagem
+            let userNameValue = userName.value;
+            spanName.textContent = userNameValue;
+        });
+
+        btnMudarPagina.addEventListener('click', function(){
+            // Redirecionar para a outra página após pressionar o botão "Começar"
+            let userNameValue = userName.value;
+            window.location.href = 'pagina-duelo.html?character=' + encodeURIComponent(userNameValue);
+        });
+    </script>
+</body>
+</html>
